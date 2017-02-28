@@ -1,0 +1,26 @@
+<h1>Todo App</h1>
+
+<p>---------------------------------------------</p>
+
+<div ng-app="app">
+<div ng-controller="todoController">
+
+  <div>
+    <h2>Tasks</h2>
+    <ol>
+      <li ng-repeat="task in tasks" ng-click="toggleComplete(task)" ng-class="{strike: task.completed}">{{ task.text }}</li>
+    </ol>
+  </div>
+  <button ng-click="deleteCompleted()">Delete Completed Tasks</button>
+
+<p>---------------------------------------------</p>
+
+  <h3>Add Task</h3>
+  <input type="text" ng-model="newTask">
+  <button ng-click="addTask(newTask)">Add Task</button>
+
+<p>---------------------------------------------</p>
+
+  <h4>| Tasks Completed: {{completedCounter()}} |</h4>
+</div>  
+</div>

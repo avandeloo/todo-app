@@ -2,7 +2,7 @@
   "use strict";
 
   angular.module("app").controller("todoController", function($scope) {
-    
+
     $scope.tasks = [
                       {
                         text: "Take out garbage.",
@@ -50,11 +50,13 @@
 
     $scope.deleteCompleted = function() {
       var completedTasks = 0
+      
       for (var i = 0; i < $scope.tasks.length; i++) {
         if ($scope.tasks[i].completed === true) {
           completedTasks += 1
         }
       }
+
       for (var j = 0; j < completedTasks; j++) { 
         for (var k = 0; k < $scope.tasks.length; k++) {
           if ($scope.tasks[k].completed === true) {

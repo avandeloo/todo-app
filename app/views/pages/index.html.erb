@@ -5,10 +5,18 @@
 <div ng-app="app">
 <div ng-controller="todoController">
 
+  <h2>Tasks</h2>
   <div>
-    <h2>Tasks</h2>
+    Filter Tasks: <input type="text" ng-model="nameFilter" list="names">
+  </div>
+  <br>
+    <button ng-click="status = ''">All</button>
+    <button ng-click="status = false">Active</button>
+    <button ng-click="status = true">Completed</button>
+  </br>
+  <div>
     <ol>
-      <li ng-repeat="task in tasks" ng-click="toggleComplete(task)" ng-class="{strike: task.completed}">{{ task.text }}</li>
+      <li ng-repeat="task in tasks | filter: { completed: status, text: nameFilter} | orderBy:orderAttribute:descending" ng-click="toggleComplete(task)" ng-class="{strike: task.completed}">{{ task.text }}</li>
     </ol>
   </div>
   <button ng-click="deleteCompleted()">Delete Completed Tasks</button>
